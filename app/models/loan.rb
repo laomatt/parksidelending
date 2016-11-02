@@ -21,12 +21,21 @@ class Loan < ActiveRecord::Base
     (amount.to_f / property_value.to_f) * 100
   end
 
+  # gives a use a reason why
+  def reason
+    why = ""
+    if ltv > 40
+      why << 'Loan amount too high for property value'
+    end
+    why
+  end
+
   # outputs based on if this loan has been rejected or accepted
   def status_string
     if accepted?
       'Loan Accepted'
     else
-      'Loan Rejected'
+      "Loan Rejected: #{reason}"
     end
   end
 end

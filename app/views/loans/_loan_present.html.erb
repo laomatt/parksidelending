@@ -10,6 +10,8 @@
     <b>Status</b>
     <div class="status <%= loan.accepted? ? 'accepted_application' : 'rejected_application' %>">
       <%= loan.status_string %>
+      <br>
+      Loan to Value Percentage: <%= loan.ltv %>%
     </div>
   </div>
 
