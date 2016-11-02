@@ -1,28 +1,18 @@
-== README
+Thanks for taking the time to look over my code.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This is a rails app, so if you wish to run this on you local host, simply clone this repository into a folder and run 'rails s' in the command line (assuming you have rails installed on your computer, if not try visiting http://rubyonrails.org)
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+If you want to use the app you can find it deployed here: https://parksideloanapplication.herokuapp.com
+
+To run in your computer, clone this repository and type in the commands:
+```````
+rake db:migrate
+rails s
+`````````
+
+After the type in 'http://localhost:3000/' in your browser of choice.
+
+To use the loan application, simply fill out the required information and submit the form.
+
+To check the status of an loan application search for the loan by application id.
