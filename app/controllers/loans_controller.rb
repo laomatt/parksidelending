@@ -40,7 +40,7 @@ class LoansController < ApplicationController
     end
   end
 
-  # Method to serve up an loan
+  # Method to serve up a loan application status
   def inspect
     # byebug
     @loan = Loan.find_by_id(params[:search])
