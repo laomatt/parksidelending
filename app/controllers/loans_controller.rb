@@ -25,10 +25,12 @@ class LoansController < ApplicationController
   # POST /loans.json
   def create
     @loan = Loan.new(loan_params)
+    @loan.amount = loan_params[:amount].gsub(/,/, '').to_f
+    @loan.property_value = loan_params[:property_value].gsub(/,/, '').to_f
 
     if @loan.save
       # conduct first test for loan approval
-      if @loan.ltv > 40
+      if @loan.ltv < 40
         @loan.update_attributes(:accepted => true)
       end
       redirect_to "/loans/#{@loan.id}"
@@ -42,7 +44,6 @@ class LoansController < ApplicationController
 
   # Method to serve up a loan application status
   def inspect
-    # byebug
     @loan = Loan.find_by_id(params[:search])
     if @loan
       render :partial => 'loan_present', :locals => { :loan => @loan }
