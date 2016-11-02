@@ -1,0 +1,51 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<p id="notice"><%= notice %></p>
+
+<h1>View Loan Status</h1>
+<form action="#" id='search-form-id' autocomplete="off">
+  <div class="form-group">
+    <input type="text" name='search' placeholder='Search by Application ID and press enter' class="form-control">
+  </div>
+</form>
+<div class="progress_space"></div>
+
+<!-- Modal -->
+<div id="loanAppModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Loan Application</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<script>
+  $('body').on('submit', '#search-form-id', function(event) {
+    event.preventDefault();
+    var data = $(this).serialize();
+    $(this).trigger('reset');
+    $('.progress_space').html('<i class="fa fa-spinner fa-spin" style="font-size:24px"></i>Searching for Application')
+    $.ajax({
+      url: '/loans/serve/inspect',
+      data: data,
+    })
+    .done(function(data) {
+      $('.modal-body').html(data);
+      $('#loanAppModal').modal('show');
+      $('.progress_space').html('');
+    })
+
+  });
+</script>

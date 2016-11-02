@@ -1,0 +1,31 @@
+<div class="panel loan_show">
+  <h2>Loan # <%= loan.id %></h2>
+  <div class="panel loan_info">
+    <b>Amount: </b>
+    <%= number_to_currency(loan.amount) %>
+    <br>
+    <b>Property Value: </b>
+    <%= number_to_currency(loan.property_value) %>
+    <br>
+    <b>Status</b>
+    <div class="status <%= loan.accepted? ? 'accepted_application' : 'rejected_application' %>">
+      <%= loan.status_string %>
+    </div>
+  </div>
+
+  <div class="panel loan_info">
+    <h4>Contact Information</h4>
+    <b>Name: </b>
+    <%= "#{loan.first_name} #{loan.last_name}" %>
+    <br>
+    <b>Email: </b>
+    <%= loan.email %>
+    <br>
+    <b>Phone: </b>
+    <%= loan.phone %>
+    <br>
+    <b>Notes: </b>
+    <%= loan.description %>
+    <br>
+  </div>
+</div>

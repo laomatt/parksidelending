@@ -1,0 +1,69 @@
+<h1>New Loan</h1>
+
+<% if flash[:error].present? %>
+  <div class="error">
+    <ul>
+      <% flash[:error].each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+<form action="/loans" method='POST'>
+<h3>Required Information</h3>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <div class="form-group">
+    <label for="loan[amount]">Loan Amount*</label>
+    <input type="text" name='loan[amount]' class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="loan[property_value]">Property Value*</label>
+    <input type="text" name='loan[property_value]' class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="loan[ssn]">Social Security Number*</label>
+    <input type="text" name='loan[ssn]' class="form-control">
+  </div>
+
+  <h3>Additional Information</h3>
+  <div class="form-group">
+    <label for="loan[first_name]">First Name</label>
+    <input type="text" name='loan[first_name]' class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="loan[last_name]">Last Name</label>
+    <input type="text" name='loan[last_name]' class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="loan[email]">E-Mail</label>
+    <input type="text" name='loan[email]' class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="loan[phone]">Phone</label>
+    <input type="text" name='loan[phone]' class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="loan[description]">Notes</label>
+    <textarea name="loan[description]" id="" cols="30" rows="10" class="form-control"></textarea>
+  </div>
+
+
+  <input type="submit" class='btn btn-lg btn-primary submit_button' value='Submit Application'>
+</form>
+
+<p>* required</p>
+
+<% if flash[:error_list].present? %>
+  <% flash[:error_list].each do |err| %>
+    <script>
+      $('input[name="loan[<%= err.to_s %>]"').addClass('erroneous')
+      $('input[name="loan[<%= err.to_s %>]"').attr('placeholder', "<%= flash[:error_hash][err].join.html_safe %>")
+    </script>
+  <% end %>
+<% end %>
