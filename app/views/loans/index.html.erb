@@ -38,7 +38,7 @@
     $(this).trigger('reset');
     $('.progress_space').html('<i class="fa fa-spinner fa-spin" style="font-size:24px"></i>Searching for Application')
     $.ajax({
-      url: '/loans/serve/inspect',
+      url: '/loans/inspect',
       data: data,
     })
     .done(function(data) {

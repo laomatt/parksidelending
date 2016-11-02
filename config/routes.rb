@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
-  resources :loans
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   root 'loans#new'
-
-  resources :loans
-
+  resources :loans do
+    collection do
+      get 'inspect'
+    end
+  end
   get 'loans/serve/inspect' => 'loans#inspect'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
