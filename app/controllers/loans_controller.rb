@@ -4,7 +4,6 @@ class LoansController < ApplicationController
   # GET /loans
   # GET /loans.json
   def index
-    @loans = Loan.all
   end
 
   # GET /loans/1

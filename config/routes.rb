@@ -5,6 +5,4 @@ Rails.application.routes.draw do
       get 'inspect'
     end
   end
-  get 'loans/serve/inspect' => 'loans#inspect'
-
 end
