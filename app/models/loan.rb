@@ -4,13 +4,13 @@ class Loan < ActiveRecord::Base
 
   def loan_amount
     if amount.to_f > property_value.to_f
-      errors.add(:amount,'Loan amount may not be greater than the property value')
+      errors.add(:amount,'loan amount may not be greater than the property value')
     end
   end
 
   def correct_ssn_format
     if (ssn =~ /(\d{3})[^\d]?(\d{2})[^\d]?(\d{4})/).nil?
-      errors.add(:ssn, 'Please enter a valid SSN')
+      errors.add(:ssn, 'please enter a valid SSN')
     end
   end
 

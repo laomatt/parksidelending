@@ -63,7 +63,7 @@
   <% flash[:error_list].each do |err| %>
     <script>
       $('input[name="loan[<%= err.to_s %>]"').addClass('erroneous')
-      $('input[name="loan[<%= err.to_s %>]"').attr('placeholder', "<%= flash[:error_hash][err].join.html_safe %>")
+      $('input[name="loan[<%= err.to_s %>]"').attr('placeholder', "<%= flash[:error_hash][err].join(', ').html_safe %>")
     </script>
   <% end %>
 <% end %>
