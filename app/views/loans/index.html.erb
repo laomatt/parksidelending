@@ -20,9 +20,9 @@
         <h4 class="modal-title">Loan Application</h4>
       </div>
       <div class="modal-body">
-        <p>Some text in the modal.</p>
       </div>
       <div class="modal-footer">
+        You may press enter again to exit
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -47,5 +47,17 @@
       $('.progress_space').html('');
     })
 
+  });
+
+  // enter submission for other browsers
+  $('body').on('keydown', 'input[name="search"]', function(event) {
+    if (event.which == 13) {
+      event.preventDefault();
+      if ($('#loanAppModal').css('display') == 'block') {
+        $('button.close').trigger('click');
+      } else{
+        $('#search-form-id').trigger('submit');
+      };
+    };
   });
 </script>
